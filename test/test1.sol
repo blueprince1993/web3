@@ -14,6 +14,7 @@ contract HelloWorld {
     }
 
     Info[] infos;
+    mapping (uint256 => Info) infoMapping;
     //1.
     //基本数据类型 bool(只允许true、false)、unit(经常用uint8 uint256)、int、bytes（最高bytes32）、address
     bool boolVar = true;
@@ -26,16 +27,32 @@ contract HelloWorld {
 
 
     string strVal = "Hello World";
-
-    function sayHello() public view returns(string memory) {
+    function sayHello(uint256 _id) public view returns(string memory) {
+        if (infoMapping[_id].addr==address(0x0)) {
+            return addInfo(strVal);
+        }
+        return addInfo(infoMapping[_id].phrase);
+    }
+    function setHelloWorld(string memory newString,uint256 _id) public {
+        Info memory info = Info(newString,_id,msg.sender);
+        infoMapping[_id]=info;
+    }
+/*
+    function sayHello(uint256 _id) public view returns(string memory) {
+        for(uint256 i=0; i < infos.length;i++) {
+            if (infos[i].id == _id) {
+                return addInfo(infos[i].phrase);
+            }
+        }
         return addInfo(strVal);
     }
 
+
     function setHelloWorld(string memory newString,uint256 _id) public {
-        strVal = newString;
         Info memory info = Info(newString,_id,msg.sender);
         infos.push(info);
     }
+*/
 
     //pure 单纯计算
     function addInfo(string memory helloWorldStr) internal pure returns(string memory){

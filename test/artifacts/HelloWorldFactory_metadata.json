@@ -9,11 +9,16 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
 						"name": "_id",
 						"type": "uint256"
 					}
 				],
-				"name": "sayHello",
+				"name": "callSayHelloFactory",
 				"outputs": [
 					{
 						"internalType": "string",
@@ -27,6 +32,11 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					},
+					{
 						"internalType": "string",
 						"name": "newString",
 						"type": "string"
@@ -37,9 +47,35 @@
 						"type": "uint256"
 					}
 				],
-				"name": "setHelloWorld",
+				"name": "callSetHelloWorldFromFactory",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "createHelloWorld",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "getHelloWorldByIndex",
+				"outputs": [
+					{
+						"internalType": "contract HelloWorld",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			}
 		],
@@ -56,7 +92,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"test/test1.sol": "HelloWorld"
+			"test/Factory.sol": "HelloWorldFactory"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -70,6 +106,14 @@
 		"remappings": []
 	},
 	"sources": {
+		"test/Factory.sol": {
+			"keccak256": "0x623027861adf5571ebdb850aed6e1b2e7fca4597ba05d776a0968f6d85cb4537",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://605c7e17d0ef89afb4bbfe17e3ad6af36f067b9a1553172bcf56dcd864bbed8c",
+				"dweb:/ipfs/QmU43kFiTQgNh16Kkgyui8aqAR68TREiAoYUaPj9jbv1XG"
+			]
+		},
 		"test/test1.sol": {
 			"keccak256": "0x77bf0b54d5a209f3c34690f02d448cf67b2515614ddfd1b1e70d4b466368e869",
 			"license": "MIT",
